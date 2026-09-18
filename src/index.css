@@ -1,0 +1,111 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------------------------------------------------------------------
+   Design tokens
+   Dark is the default palette (no class needed). Adding `.light` to
+   <html> swaps every token below -- nothing else has to change.
+   Values are "R G B" triples so Tailwind's rgb(var(--x) / <alpha>) can
+   still apply opacity utilities like bg-accent/10.
+------------------------------------------------------------------------ */
+:root {
+  --color-background: 10 10 15;
+  --color-surface: 19 18 24;
+  --color-border: 35 34 49;
+  --color-foreground: 234 232 240;
+  --color-muted: 141 138 156;
+  --color-accent: 157 111 255;
+  --color-accent-foreground: 10 10 15; /* dark text reads far better on this bright a violet (5.8:1 vs 3.4:1 for white) */
+}
+
+html.light {
+  --color-background: 247 246 251;
+  --color-surface: 255 255 255;
+  --color-border: 228 226 237;
+  --color-foreground: 20 19 26;
+  --color-muted: 107 104 120;
+  --color-accent: 124 79 224;
+  --color-accent-foreground: 255 255 255;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    transition: background-color 0.4s ease, color 0.4s ease;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display;
+  }
+
+  ::selection {
+    background-color: rgb(var(--color-accent) / 0.35);
+    color: rgb(var(--color-foreground));
+  }
+
+  :focus-visible {
+    outline: 2px solid rgb(var(--color-accent));
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: rgb(var(--color-background));
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgb(var(--color-border));
+    border-radius: 999px;
+    border: 2px solid rgb(var(--color-background));
+  }
+}
+
+@layer utilities {
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, rgb(var(--color-border) / 0.5) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(var(--color-border) / 0.5) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+
+  .bg-grain {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    opacity: 0.035;
+  }
+
+  .glass {
+    background-color: rgb(var(--color-surface) / 0.6);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0A0A0F" />
+    <script>
+      // Dark is the default look. If the visitor previously chose light
+      // mode, apply it before first paint so there's no flash back to dark.
+      try {
+        if (localStorage.getItem('theme') === 'light') {
+          document.documentElement.classList.add('light')
+        }
+      } catch (e) {}
+    </script>
+
+    <title>Akshat — Frontend Developer & Creative Coder</title>
+    <meta
+      name="description"
+      content="Portfolio of Akshat, a frontend developer building interactive web apps, 3D experiences, and computer-vision-powered interfaces with React, Three.js, and Python."
+    />
+
+    <!-- Open Graph / social preview. Add an /og-image.png (1200x630) to public/ for the preview card. -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Akshat — Frontend Developer & Creative Coder" />
+    <meta
+      property="og:description"
+      content="Interactive web apps, 3D experiences, and computer-vision-powered interfaces — built with React, Three.js, and Python."
+    />
+    <meta property="og:image" content="/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
