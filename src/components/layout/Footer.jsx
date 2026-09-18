@@ -7,7 +7,7 @@ export function Footer() {
     <footer className="border-t border-border">
       <div className="max-w-content mx-auto px-4 sm:px-6 lg:px-8 py-10 flex flex-col sm:flex-row items-center justify-between gap-6">
         <img
-          src="/logo.png"
+          src="/images/logo.svg"
           alt="logo"
           className="w-16 rounded-full object-cover object-center"
         />
