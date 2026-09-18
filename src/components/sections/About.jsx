@@ -41,7 +41,7 @@ export function About() {
                 <div className="absolute inset-0 bg-grid opacity-20 z-10 pointer-events-none" />
 
                 <img
-                  src="/profile.jpg"
+                  src="/images/akshat.jpg"
                   alt="Akshat"
                   className="w-full h-full object-cover"
                 />
